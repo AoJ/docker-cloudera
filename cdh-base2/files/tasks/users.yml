@@ -1,0 +1,105 @@
+- hosts: localhost
+  user: root
+
+  # https://www.cloudera.com/documentation/enterprise/5-13-x/topics/cm_sg_cm_users_principals.html
+
+  tasks:
+  - group:
+      name: hadoop
+      system: yes
+
+  - user:
+      name: flume
+      system: yes
+      createhome: no
+
+  - user:
+      name: hbase
+      system: yes
+      createhome: no
+    
+  - user:
+      name: hdfs
+      system: yes
+      createhome: no
+      groups: [hadoop]
+
+  - user:
+      name: hive
+      system: yes
+      createhome: no
+
+  - user:
+      name: httpfs
+      system: yes
+      createhome: no
+
+  - user:
+      name: hue
+      system: yes
+      createhome: no
+
+  - user:
+      name: apache
+      system: yes
+      createhome: no
+
+  - user:
+      name: impala
+      system: yes
+      createhome: no
+      groups: [hive]
+
+  - user:
+      name: kafka
+      system: yes
+      createhome: no
+
+  - user:
+      name: kudu
+      system: yes
+      createhome: no
+
+  - user:
+      name: mapred
+      system: yes
+      createhome: no
+      groups: [hadoop]
+
+  - user:
+      name: oozie
+      system: yes
+      createhome: no
+
+  - user:
+      name: solr
+      system: yes
+      createhome: no
+
+  - user:
+      name: spark
+      system: yes
+      createhome: no
+
+  - user:
+      name: sentry
+      system: yes
+      createhome: no
+
+  - user:
+      name: sqoop
+      system: yes
+      createhome: no
+
+  - user:
+      name: yarn
+      system: yes
+      createhome: no
+      groups: [hadoop]
+
+  - user:
+      name: zookeeper
+      system: yes
+      createhome: no
+
+

@@ -1,0 +1,43 @@
+- hosts: localhost
+
+  tasks:
+  - user:
+      name: impala
+      system: yes
+      createhome: no
+      groups: [hive, hadoop]
+
+  - file:
+      path: /var/dfs/dn
+      state: directory
+      mode: 0750
+      owner: hdfs
+      group: hadoop
+
+  - file:
+      path: /var/dfs/nn
+      state: directory
+      mode: 0750
+      owner: hdfs
+      group: hdfs
+
+  - file:
+      path: /var/dfs/snn
+      state: directory
+      mode: 0750
+      owner: hdfs
+      group: hdfs
+
+  - file:
+      path: /var/impala/impalad
+      state: directory
+      mode: 0750
+      owner: impala
+      group: impala
+
+  - file:
+      path: /var/yarn/nm
+      state: directory
+      mode: 0750
+      owner: yarn
+      group: hadoop
