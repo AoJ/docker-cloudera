@@ -18,7 +18,7 @@ rm -rf /var/cache/yum
 systemctl disable cloudera-scm-server
 systemctl disable cloudera-scm-agent
 
-ansible-playbook -vv /tmp/cdh_download.yml
+ansible-playbook -vv ${BASH_SOURCE%/*}/cdh_download.yml
 
 # mkdir -p /opt/cloudera/parcel-repo
 # cd /opt/cloudera/parcel-repo

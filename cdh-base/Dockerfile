@@ -7,7 +7,8 @@ LABEL CDH_VERSION="5.13.2"
 COPY files /tmp/install
 
 RUN chmod +x /tmp/install/*.sh \
-    && sync && /tmp/install/install_ansible.sh \
+    && sync \
+    && /tmp/install/install_ansible.sh \
     && /tmp/install/cdh_download.sh \
     && /tmp/install/install.sh \
     && rm -rf /tmp/install
