@@ -2,6 +2,7 @@ NAME ?= aooj/cdh
 VERSION ?= 5.13.2
 CDH_VERSION ?= 5.13.2
 
+
 root:
 	docker build --no-cache --force-rm -t ${NAME}:root root
 
