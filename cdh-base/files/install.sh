@@ -9,7 +9,7 @@ gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 CMD
 
-yum install -y mariadb-server MariaDB-Galera-server MariaDB-client galera MariaDB-tokudb-engine
+yum install -y mariadb-server MariaDB-Galera-server MariaDB-client galera MariaDB-tokudb-engine wget
 
 export JAVA_HOME="/usr/java/$(ls -t /usr/java/ | grep -e "jdk.*-cloudera" | head -1)"
 env | grep JAVA_HOME >> /etc/default/cloudera-scm-agent
