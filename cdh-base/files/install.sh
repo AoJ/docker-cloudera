@@ -33,9 +33,3 @@ yum install -y  mod_ssl m4 libverto-libevent keyutils-libs-devel postgresql-libs
                 fuse-libs libkadm5 libcgroup-tools python-psycopg2 zlib-devel pcre-devel fuse ncdu nginx-mod-mail nginx-all-modules \
                 nginx-mod-stream ssmtp zvbi-fonts nginx-mod-http-perl nload nginx-mod-http-image-filter nginx-filesystem nginx jemalloc \
                 nginx-mod-http-geoip nginx-mod-http-xslt-filter htop screen openssh-server openssh-clients nano telnet
-
-
-
-
-yum clean all
-rm -rf /var/cache/yum

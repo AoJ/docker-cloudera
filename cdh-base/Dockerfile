@@ -8,6 +8,8 @@ COPY files /tmp/install
 
 RUN chmod +x /tmp/install/*.sh \
     && sync \
-    && /tmp/install/cdh_download.sh \
+    && ansible-playbook -vv /tmp/install/cdh_download.yml \
     && /tmp/install/install.sh \
+    && yum clean all \
+    && rm -rf /var/cache/yum \
     && rm -rf /tmp/install
