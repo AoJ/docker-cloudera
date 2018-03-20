@@ -17,7 +17,7 @@ env | grep JAVA_HOME >> /etc/default/cloudera-scm-agent
 mkdir -p /usr/share/java
 mkdir -p /tmp/mysql-connector-java
 cd /tmp/mysql-connector-java
-wget http://download.softagency.net/MySQL/Downloads/Connector-J/mysql-connector-java-5.1.42.tar.gz
+wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.42.tar.gz
 tar -zxvf mysql-connector-java-5.1.42.tar.gz mysql-connector-java-5.1.42/mysql-connector-java-5.1.42-bin.jar
 mv mysql-connector-java-5.1.42/mysql-connector-java-5.1.42-bin.jar /usr/share/java/mysql-connector-java.jar
 cd
