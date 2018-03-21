@@ -1,4 +1,4 @@
-FROM cdh-base:5.13.2
+FROM aooj/cdh-base:5.13.2
 MAINTAINER AooJ <aooj@n13.cz>
 
 
