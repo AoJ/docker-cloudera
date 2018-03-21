@@ -17,12 +17,12 @@
   - yum:
         name: oracle-j2sdk1.7
 
-#  - systemd:
-#        name: cloudera-scm-server
-#        enabled: no
-#  - systemd:
-#        name: cloudera-scm-agent
-#        enabled: no
+  - systemd:
+        name: cloudera-scm-server
+        enabled: no
+  - systemd:
+        name: cloudera-scm-agent
+        enabled: no
 
   - file:
       path: /opt/cloudera/parcel-repo
