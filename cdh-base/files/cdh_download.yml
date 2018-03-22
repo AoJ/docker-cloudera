@@ -21,6 +21,8 @@
   - systemd:
         name: cloudera-scm-agent
         enabled: no
+
+
   - yum:
         name: oracle-j2sdk1.7
 
@@ -34,7 +36,7 @@
       regexp: '^JAVA_HOME='
       line: "JAVA_HOME={{java_home.stdout}}"
       create: true
-  with_items:
+    with_items:
         - /etc/default/cloudera-scm-agent
         - /etc/profile.d/java.sh
         - /etc/default/bigtop-utils
