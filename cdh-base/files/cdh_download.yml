@@ -25,7 +25,7 @@
         name: oracle-j2sdk1.7
 
   - shell: echo /usr/java/$(ls -t /usr/java/ | grep -e "jdk.*-cloudera" | head -1)
-        register: java_home
+      register: java_home
 
   - local_action: debug msg="JAVA_HOME={{java_home.stdout}}"
 
