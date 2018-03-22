@@ -11,7 +11,7 @@
         gpgcheck: yes
         enabled: yes
   - yum:
-        name: {{item}}
+        name: "{{item}}"
         state: latest
         with_items:
           - mariadb-server
@@ -50,7 +50,7 @@
 
 
   - yum:
-        name: {{item}}
+        name: "{{item}}"
         state: latest
         with_items:
           - mod_ssl m4
