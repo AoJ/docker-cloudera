@@ -6,10 +6,10 @@ MAINTAINER AooJ <aooj@n13.cz>
 
 COPY files/ /tmp/
 
-RUN chmod +x /tmp/install.sh && /tmp/install.sh && rm /tmp/install.sh
 RUN chmod +x /tmp/install2.sh && /tmp/install2.sh && rm /tmp/install2.sh
 
-RUN ansible-playbook -vv /tmp/tasks/users.yml
+RUN ansible-playbook -vv /tmp/tasks/db.yml
+# RUN ansible-playbook -vv /tmp/tasks/users.yml
 
 # RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 # rm -f /lib/systemd/system/multi-user.target.wants/*;\

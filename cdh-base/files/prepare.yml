@@ -6,7 +6,7 @@
   -  yum_repository:
         name: MariaDB
         description: Cloudera Manager repository
-        baseurl: http://yum.mariadb.org/10.2.9/centos7-amd64
+        baseurl: http://yum.mariadb.org/10.1.31/centos7-amd64
         gpgkey: https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
         gpgcheck: yes
         enabled: yes
@@ -16,7 +16,6 @@
           - MariaDB-server
           - MariaDB-client
           - galera
-          - MariaDB-tokudb-engine
           - epel-release
 
   - file:
