@@ -9,14 +9,29 @@
       system: yes
 
   - user:
-      name: flume
+      name: "{{iten}}"
       system: yes
       createhome: no
+    with_items:
+        - flume
+        - hbase
+        - hdfs
+        - hive
+        - httpfs
+        - hue
+        - apache
+        - impala
+        - kafka
+        - kudu
+        - mapred
+        - oozie
+        - solr
+        - spark
+        - sentry
+        - sqoop
+        - yarn
+        - zookeeper
 
-  - user:
-      name: hbase
-      system: yes
-      createhome: no
     
   - user:
       name: hdfs
@@ -25,40 +40,10 @@
       groups: [hadoop]
 
   - user:
-      name: hive
-      system: yes
-      createhome: no
-
-  - user:
-      name: httpfs
-      system: yes
-      createhome: no
-
-  - user:
-      name: hue
-      system: yes
-      createhome: no
-
-  - user:
-      name: apache
-      system: yes
-      createhome: no
-
-  - user:
       name: impala
       system: yes
       createhome: no
       groups: [hive]
-
-  - user:
-      name: kafka
-      system: yes
-      createhome: no
-
-  - user:
-      name: kudu
-      system: yes
-      createhome: no
 
   - user:
       name: mapred
@@ -67,39 +52,9 @@
       groups: [hadoop]
 
   - user:
-      name: oozie
-      system: yes
-      createhome: no
-
-  - user:
-      name: solr
-      system: yes
-      createhome: no
-
-  - user:
-      name: spark
-      system: yes
-      createhome: no
-
-  - user:
-      name: sentry
-      system: yes
-      createhome: no
-
-  - user:
-      name: sqoop
-      system: yes
-      createhome: no
-
-  - user:
       name: yarn
       system: yes
       createhome: no
       groups: [hadoop]
-
-  - user:
-      name: zookeeper
-      system: yes
-      createhome: no
 
 
