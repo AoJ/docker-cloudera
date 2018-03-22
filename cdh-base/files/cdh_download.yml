@@ -21,7 +21,7 @@
     regexp: '^JAVA_HOME='
     line: "JAVA_HOME={{java_home.stdout}}"
   with_items:
-    - /etc/default/cloudera-scm-agent
-    - /etc/profile.d/java.sh
-    - /etc/default/bigtop-utils
+        - /etc/default/cloudera-scm-agent
+        - /etc/profile.d/java.sh
+        - /etc/default/bigtop-utils
 
