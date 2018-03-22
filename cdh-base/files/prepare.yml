@@ -112,7 +112,6 @@
           - zlib-devel
           - pcre-devel
           - fuse
-          - nginx-mod-mail
           - nginx-all-modules
           - nginx-mod-stream
           - ssmtp
