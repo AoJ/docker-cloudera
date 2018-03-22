@@ -4,12 +4,12 @@ set -exuo pipefail
 cat << CMD > /etc/yum.repos.d/mariadb.repo
 [mariadb]
 name = MariaDB
-baseurl = http://yum.mariadb.org/10.1/centos7-amd64
+baseurl = http://yum.mariadb.org/10.2.9/centos7-amd64
 gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 CMD
 
-yum install -y mariadb-server MariaDB-Galera-server MariaDB-client galera MariaDB-tokudb-engine wget
+yum install -y mariadb-server mariadb-client galera mariadb-tokudb-engine wget
 
 export JAVA_HOME="/usr/java/$(ls -t /usr/java/ | grep -e "jdk.*-cloudera" | head -1)"
 env | grep JAVA_HOME >> /etc/default/cloudera-scm-agent

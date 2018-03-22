@@ -14,7 +14,6 @@
         name: "{{item}}"
     with_items:
           - mariadb-server
-          - mariadb-galera-server
           - mariadb-client
           - galera
           - mariadb-tokudb-engine
@@ -50,7 +49,6 @@
 
   - yum:
         name: "{{item}}"
-        state: latest
     with_items:
           - mod_ssl m4
           - libverto-libevent
