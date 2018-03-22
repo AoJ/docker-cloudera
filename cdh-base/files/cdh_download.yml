@@ -20,6 +20,7 @@
         path: "{{item}}"
         regexp: '^JAVA_HOME='
         line: "JAVA_HOME={{java_home.stdout}}"
+        create: true
     with_items:
           - /etc/default/cloudera-scm-agent
           - /etc/profile.d/java.sh
