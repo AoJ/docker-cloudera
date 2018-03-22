@@ -14,7 +14,7 @@
         name: "{{item}}"
     with_items:
           - mariadb-server
-          - mariadb-client
+          - mariadb
           - galera
           - mariadb-tokudb-engine
 
