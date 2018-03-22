@@ -1,0 +1,91 @@
+- hosts: localhost
+  gather_facts: false
+  user: root
+
+  # https://www.cloudera.com/documentation/enterprise/5-13-x/topics/cm_sg_cm_users_principals.html
+
+  tasks:
+  - service:
+      name: mysql
+      state: started
+
+  - stat: path=/etc/pass/mysql-root
+    register: mysql_pass_file
+
+  - name: create mysql root with random password
+    mysql_user:
+      name: "root"
+      password: "{{ lookup('password', '/etc/pass/mysql-root chars=ascii_letters,digits,hexdigits') }}"
+      priv: "*.*:ALL,GRANT"
+    when: mysql_pass_file.stat.exists == False
+
+  - name: Removes all anonymous user accounts
+    mysql_user:
+      name: ''
+      host_all: yes
+      login_user: root
+      login_password: "{{ lookup('password', '/etc/pass/mysql-root chars=ascii_letters,digits,hexdigits') }}"
+      state: absent
+
+  - name: create a mysql users with a random password
+    mysql_user:
+      name: "{{item}}"
+      password: "{{ lookup('password', '/etc/pass/mysql-{{item}} chars=ascii_letters,digits,hexdigits') }}"
+      priv: "{{item}}.*:ALL"
+      login_user: "root"
+      login_password: "{{ lookup('password', '/etc/pass/mysql-root chars=ascii_letters,digits,hexdigits') }}"
+    with_items:
+        - amon
+        - hue
+        - sentry
+        - oozie
+        - hive
+
+  - name: create the scm mysql users with a random password
+    mysql_user:
+      name: "scm"
+      password: "{{ lookup('password', '/etc/pass/mysql-scm chars=ascii_letters,digits,hexdigits') }}"
+      priv: "scm.*:ALL"
+      login_user: "root"
+      login_password: "{{ lookup('password', '/etc/pass/mysql-root chars=ascii_letters,digits,hexdigits') }}"
+    register: db_scm
+
+
+  - name: prepare Cloudera database
+    shell: echo "$(cat /etc/pass/mysql-scm)" | /usr/share/cmf/schema/scm_prepare_database.sh mysql -h localhost -uroot "-p$(cat /etc/pass/mysql-root)" -v --scm-host localhost scm scm 
+    run_once: true
+    when: db_scm.changed
+    register: cm_init
+
+  - name: in docker with centos there is error with permission denied within su
+    file:
+      path: /etc/security/limits.d/cloudera-scm.conf
+      state: absent
+
+  - service:
+      name: cloudera-scm-server
+      state: started
+    when: cm_init.changed
+
+  - name: wait for the first run of CM (db updates, checking parcels)
+    wait_for:
+      delay: 5
+      path: /var/log/cloudera-scm-server/cloudera-scm-server.log
+      search_regex: 'INFO ParcelUpdateService:com.turn.ttorrent.common.Torrent: Hashed'
+
+
+  - service:
+      name: cloudera-scm-server
+      state: stopped
+
+  - service:
+      name: cloudera-scm-server
+      state: stopped
+
+  - service:
+      name: "{{item}}"
+      enabled: true
+    with_items:
+        - mysql
+        - cloudera-scm-server
+        - cloudera-scm-agent
