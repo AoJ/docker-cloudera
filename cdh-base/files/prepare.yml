@@ -15,10 +15,10 @@
         state: latest
     with_items:
           - mariadb-server
-          - MariaDB-Galera-server
-          - MariaDB-client
+          - mariadb-galera-server
+          - mariadb-client
           - galera
-          - MariaDB-tokudb-engine
+          - mariadb-tokudb-engine
 
   - file:
       path: /usr/share/java
