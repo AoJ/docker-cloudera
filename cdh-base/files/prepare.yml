@@ -6,7 +6,7 @@
   -  yum_repository:
         name: MariaDB
         description: Cloudera Manager repository
-        baseurl: http://yum.mariadb.org/10.1/centos7-amd64
+        baseurl: http://yum.mariadb.org/10.2.9/centos7-amd64
         gpgkey: https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
         gpgcheck: yes
         enabled: yes
@@ -14,9 +14,10 @@
         name: "{{item}}"
     with_items:
           - mariadb-server
-          - mariadb
+          - MariaDB-Galera-server
+          - MariaDB-client
           - galera
-          - mariadb-tokudb-engine
+          - MariaDB-tokudb-engine
 
   - file:
       path: /usr/share/java
@@ -49,6 +50,7 @@
 
   - yum:
         name: "{{item}}"
+        state: latest
     with_items:
           - mod_ssl m4
           - libverto-libevent
