@@ -9,13 +9,21 @@
         gpgcheck: yes
         enabled: yes
   - yum:
+        name: oracle-j2sdk1.7
+
+  - shell: echo /usr/java/$(ls -t /usr/java/ | grep -e "jdk.*-cloudera" | head -1)
+    register: java_home
+
+  - local_action: debug msg="JAVA_HOME={{java_home.stdout}}"
+
+  - yum:
+        name: xxx
+  - yum:
         name: cloudera-manager-daemons
   - yum:
         name: cloudera-manager-agent
   - yum:
         name: cloudera-manager-server
-  - yum:
-        name: oracle-j2sdk1.7
 
   - systemd:
         name: cloudera-scm-server
@@ -42,3 +50,5 @@
   - get_url:
       url: "https://archive.cloudera.com/cdh5/parcels/{{ lookup('env','CDH_VERSION') }}/CDH-{{ lookup('env','CDH_VERSION') }}-1.cdh{{ lookup('env','CDH_VERSION') }}.p0.3-el7.parcel.sha1"
       dest: "/opt/cloudera/parcel-repo/CDH-{{ lookup('env','CDH_VERSION') }}-1.cdh{{ lookup('env','CDH_VERSION') }}.p0.3-el7.parcel.sha"
+
+
