@@ -112,7 +112,6 @@
           - zlib-devel
           - pcre-devel
           - fuse
-          - ncdu 
           - nginx-mod-mail
           - nginx-all-modules
           - nginx-mod-stream
