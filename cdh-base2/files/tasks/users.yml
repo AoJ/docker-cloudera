@@ -9,7 +9,7 @@
       system: yes
 
   - user:
-      name: "{{iten}}"
+      name: "{{item}}"
       system: yes
       createhome: no
     with_items:
