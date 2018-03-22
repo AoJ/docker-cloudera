@@ -38,7 +38,7 @@
       remote_src: yes
 
   - copy:
-      src: mysql-connector-java-5.1.42/mysql-connector-java-5.1.42-bin.jar
+      src: /tmp/mysql-connector-java/mysql-connector-java-5.1.42/mysql-connector-java-5.1.42-bin.jar
       dest: /usr/share/java/mysql-connector-java.jar
       remote_src: true
 
