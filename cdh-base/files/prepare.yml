@@ -51,7 +51,8 @@
         name: "{{item}}"
         state: latest
     with_items:
-          - mod_ssl m4
+          - mod_ssl
+          - m4
           - libverto-libevent
           - keyutils-libs-devel
           - postgresql-libs
