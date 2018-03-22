@@ -6,8 +6,7 @@ ENV CDH_VERSION=$CDH_VERSION
 
 COPY files /tmp/install
 
-RUN chmod +x /tmp/install/*.sh \
-    && sync \
+RUN sync \
     && ansible-playbook -vv /tmp/install/cdh_download.yml \
     && ansible-playbook -vv /tmp/install/prepare.yml \
     && yum clean all \
