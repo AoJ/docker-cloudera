@@ -26,4 +26,4 @@ RUN
     createrepo /var/www/html                                                        && \
     echo > /etc/httpd/conf.d/welcome.conf                                           && \
     yum clean all                                                                   && \
-    rm -rf /var/cache/yum                                                           && \
+    rm -rf /var/cache/yum
