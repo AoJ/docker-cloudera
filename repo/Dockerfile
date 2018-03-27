@@ -20,7 +20,7 @@ enabled=1                                                                       
 " > /etc/yum.repos.d/cloudera-manager.repo
 
 RUN yum install -y reposync createrepo                                                  && \
-    rpm -Uvh https://archive.cloudera.com/cdh5/redhat/7/x86_64/cdh/RPM-GPG-KEY-cloudera && \
+    rpm --import https://archive.cloudera.com/cdh5/redhat/7/x86_64/cdh/RPM-GPG-KEY-cloudera && \
     reposync --gpgcheck --download-metadata -p /var/www/html -r cloudera-manager -l     && \
     createrepo /var/www/html                                                            && \
     curl -o  /var/www/html/ https://archive.cloudera.com/cdh5/redhat/7/x86_64/cdh/RPM-GPG-KEY-cloudera && \
