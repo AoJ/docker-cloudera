@@ -3,6 +3,9 @@ VERSION ?= 5.13.2
 CDH_VERSION ?= 5.13.2
 
 
+repo-cdh:
+	docker build --no-cache --force-rm -t ${NAME}:5.13.2 repo
+
 root:
 	docker build --no-cache --force-rm -t ${NAME}:root root
 
