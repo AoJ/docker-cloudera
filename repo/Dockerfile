@@ -29,4 +29,5 @@ RUN yum install -y reposync createrepo httpd                                    
     rm -rf /var/cache/yum
 
 
-ENTRYPOINT ["/usr/sbin/httpd", "-DFOREGROUND"]
+ENTRYPOINT ["/usr/sbin/httpd"]
+CMD ["-DFOREGROUND"]
