@@ -20,8 +20,7 @@ gpgcheck=1                                                                      
 enabled=1                                                                           \n\
 CMD
 
-RUN 
-    yum install -y reposync createrepo                                              && \
+RUN yum install -y reposync createrepo                                              && \
     reposync -p /var/www/html -r cloudera-manager -l                                && \
     createrepo /var/www/html                                                        && \
     echo > /etc/httpd/conf.d/welcome.conf                                           && \
