@@ -3,7 +3,7 @@ MAINTAINER AooJ <aooj@n13.cz>
 
 ENV FAKE_SYSTEMCTL=https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/b9b2c8ecf8a5d2b986060fc1592055e75b84a6b8/files/docker/systemctl.py
 RUN curl -o /usr/bin/systemctl ${FAKE_SYSTEMCTL}                                    && \
-    chmod 0755 /usr/bin/systemctl                                                   && \
+    chmod 0755 /usr/bin/systemctl
 
 
 ARG CDH_VERSION=5.13.2
