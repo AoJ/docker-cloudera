@@ -19,11 +19,11 @@ gpgcheck=1                                                                      
 enabled=1                                                                               \n\
 " > /etc/yum.repos.d/cloudera-manager.repo
 
-RUN yum install -y reposync createrepo                                                  && \
+RUN yum install -y reposync createrepo httpd                                            && \
     rpm --import ${GPG_KEY}                                                             && \
     reposync --gpgcheck --download-metadata -p /var/www/html -r cloudera-manager -l     && \
     createrepo /var/www/html                                                            && \
     curl -o /var/www/html/RPM-GPG-KEY-cloudera ${GPG_KEY}                               && \
-    echo /etc/httpd/conf.d/welcome.conf                                                 && \
+    echo > /etc/httpd/conf.d/welcome.conf                                               && \
     yum clean all                                                                       && \
     rm -rf /var/cache/yum
