@@ -27,3 +27,6 @@ RUN yum install -y reposync createrepo httpd                                    
     echo > /etc/httpd/conf.d/welcome.conf                                               && \
     yum clean all                                                                       && \
     rm -rf /var/cache/yum
+
+
+ENTRYPOINT ["/usr/sbin/httpd", "-DFOREGROUND"]
