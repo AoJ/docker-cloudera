@@ -10,14 +10,14 @@ ARG CDH_VERSION=5.13.2
 ENV CDH_VERSION=$CDH_VERSION
 
 
-RUN echo $'[cloudera-manager]                                                       \n\
+RUN echo -e "[cloudera-manager]                                                     \n\
 name = cloudera-manager                                                             \n\
 description = Cloudera Manager repository                                           \n\
 baseurl = https://archive.cloudera.com/cm5/redhat/7/x86_64/cm/${CDH_VERSION}/       \n\
 gpgkey=https://archive.cloudera.com/cdh5/redhat/7/x86_64/cdh/RPM-GPG-KEY-cloudera   \n\
 gpgcheck=1                                                                          \n\
 enabled=1                                                                           \n\
-' > /etc/yum.repos.d/cloudera-manager.repo
+" > /etc/yum.repos.d/cloudera-manager.repo
 
 RUN yum install -y reposync createrepo                                              && \
     reposync -p /var/www/html -r cloudera-manager -l                                && \
