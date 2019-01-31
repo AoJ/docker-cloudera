@@ -1,6 +1,6 @@
 NAME ?= aooj/cdh
-VERSION ?= 5.13.2
-CDH_VERSION ?= 5.13.2
+VERSION ?= 5.16.1
+CDH_VERSION ?= 5.16.1
 
 
 repo-cdh:
